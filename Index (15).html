@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id"><head><base target="_top"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mitratel | CRC UMT Monitoring</title>
+<style>
+:root{--nav:#122b49;--nav2:#0d2139;--bg:#f2f6fb;--card:#fff;--ink:#14233b;--muted:#66758d;--line:#dfe7f1;--blue:#1465e8;--red:#e23b3b;--orange:#f28b20;--yellow:#efc928;--purple:#8556e8;--green:#139b6b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.45 Inter,Segoe UI,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+.topbar{min-height:66px;background:linear-gradient(105deg,var(--nav2),#24496f);color:white;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;gap:14px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:13px}.logo{font-size:19px;font-weight:900;border-right:1px solid #ffffff55;padding-right:14px}.logo small{display:block;font-size:8px;text-align:right}.brand h1{font-size:20px;margin:0}.brand p{font-size:11px;margin:2px 0 0;color:#cbd9e9}.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{border:1px solid #cdd8e7;background:#fff;color:#263954;border-radius:8px;padding:8px 11px;font-weight:700}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.dark{background:#263f5d;color:white;border-color:#46607c}.app{display:grid;grid-template-columns:145px minmax(0,1fr);min-height:calc(100vh - 66px)}aside{background:linear-gradient(var(--nav),#102740);color:#d7e4f4;padding:13px 7px;display:flex;flex-direction:column;gap:5px}aside button{border:0;background:transparent;color:inherit;text-align:left;border-radius:8px;padding:11px 10px;font-weight:600;font-size:12px}aside button.active,aside button:hover{background:#1e4e8e;color:#fff}main{padding:14px;min-width:0;display:grid;gap:10px;align-content:start}.kpis{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.kpi,.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}.kpi .label{font-size:11px;color:#4f6078;font-weight:650}.kpi .num{font-size:25px;font-weight:850;margin-top:6px}.kpi .sub,.muted{font-size:10px;color:var(--muted)}.kpi .line{height:3px;width:22px;margin-top:8px}.charts{display:grid;grid-template-columns:minmax(205px,.72fr) minmax(205px,.72fr) minmax(360px,1.25fr) minmax(390px,1.35fr);gap:12px;align-items:stretch}.scurve-panel{min-width:0}.scurve-wrap{width:100%;overflow:hidden}.scurve-wrap svg{display:block;width:100%;height:auto;max-height:255px}.scurve-legend{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;font-size:9px;color:var(--muted);margin-top:5px}.scurve-legend span{white-space:nowrap}.scurve-legend i{display:inline-block;width:9px;height:3px;vertical-align:middle;margin-right:4px;border-radius:2px}.panel h3{font-size:13px;margin:0 0 6px;color:#132b49}.panel p{font-size:10px;color:var(--muted);margin:0 0 12px}.charts .panel{padding:14px 15px;min-height:330px;box-shadow:0 2px 8px #18365a08}.chart-footnote{font-size:9px;color:var(--muted);margin-top:7px;text-align:right}.barlist{display:grid;gap:9px}.donut-layout{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:235px;flex-wrap:nowrap;padding:8px 4px 12px}.donut-layout .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:9px 14px;width:100%;max-width:100%;min-width:0}.donut-layout .legend-row{justify-content:flex-start;min-width:0;font-size:10px}.donut-layout .legend-row b{margin-left:auto!important}.donut{width:148px;height:148px;border-radius:50%;position:relative;flex:0 0 auto;filter:drop-shadow(0 4px 7px #102a4318)}.donut:after{content:"";position:absolute;inset:31px;background:white;border-radius:50%;box-shadow:inset 0 0 0 1px #edf1f7}.donut-center{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:800;font-size:25px;color:#142b49}.donut-center small{font-size:10px;color:var(--muted);font-weight:500}.legend{display:grid;gap:12px;min-width:115px;max-width:175px}.legend-row{display:flex;align-items:center;gap:7px;font-size:11px;white-space:nowrap}.legend-dot{width:11px;height:11px;border-radius:4px;flex:0 0 auto;box-shadow:0 1px 2px #0002}.vchart{height:290px;display:flex;align-items:stretch;gap:8px;padding:14px 10px 4px;border-bottom:1px solid #dce5f0;overflow:hidden;width:100%;position:relative;background:repeating-linear-gradient(to top,transparent 0,transparent 51px,#edf2f8 52px);border-radius:8px}.vcol{min-width:0;flex:1 1 0;display:grid;grid-template-rows:22px 1fr 42px;align-items:end;justify-items:center;gap:4px;overflow:hidden}.vcol .vval{font-size:10px;font-weight:800;color:#314968;align-self:end}.vcol .vbar{width:min(38px,72%);min-height:3px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#36a5d6 0%,#147db5 100%);box-shadow:0 3px 7px #1686bd24;align-self:end;transition:height .25s}.vcol .vlabel{font-size:9px;line-height:1.2;width:100%;max-width:68px;height:34px;white-space:normal;overflow:hidden;text-overflow:ellipsis;text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;align-self:start;margin-top:3px;color:#52657f}.barrow{display:grid;grid-template-columns:100px 1fr 35px;align-items:center;gap:8px;font-size:11px}.vcol-bars{display:flex;align-items:end;justify-content:center;gap:4px;height:100%;width:100%}.vcol-bars .vbar{width:min(22px,38%);min-height:0}.vbar.total{background:linear-gradient(180deg,#36a5d6 0%,#147db5 100%)}.vbar.progress{background:linear-gradient(180deg,#f7bd55 0%,#e88916 100%)}.vval-pair{display:flex;gap:8px;justify-content:center;font-size:9px;font-weight:800;color:#314968;align-self:end}.chart-legend{display:flex;justify-content:center;gap:16px;font-size:10px;color:var(--muted);margin-top:7px}.chart-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}.progress-summary table{min-width:900px}.progress-summary .tag{white-space:nowrap}.bar{height:9px;background:#edf2f8;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;border-radius:20px;background:var(--blue)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:7px}table{width:100%;border-collapse:collapse;min-width:760px;font-size:10px}th{background:#eff3f8;text-align:left;color:#42546f;position:sticky;top:0}th,td{padding:8px;border-bottom:1px solid #e5ebf3;white-space:nowrap}tr:last-child td{border-bottom:0}.tag{padding:3px 7px;border-radius:20px;font-weight:700}.p0{background:#ffe6e6;color:#c62828}.p1{background:#fff0df;color:#b85b00}.p2{background:#fff8d9;color:#8b6a00}.p3{background:#f0eaff;color:#6c43c7}.open{background:#ffe8e8;color:#b42318}.close{background:#e2f7ee;color:#08784f}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}.toolbar input,.toolbar select{border:1px solid #ccd8e7;border-radius:7px;padding:8px;background:white}.toolbar input{flex:1;min-width:180px}.status{font-size:11px;color:#cbd9e9}.page{display:none}.page.active{display:grid;gap:10px}.footer{text-align:center;color:#7888a0;font-size:10px;padding:4px}.note{width:145px;border:1px solid #d3dce8;border-radius:5px;padding:5px;font-size:10px}.recovery-table{min-width:1490px}.recovery-table th:first-child,.recovery-table td:first-child{width:48px;min-width:48px;text-align:center}.recovery-table td:first-child{font-weight:700;color:#52657f}.recovery-table th{vertical-align:top}.recovery-filter{display:block;width:100%;min-width:75px;margin-top:6px;padding:5px 4px;border:1px solid #cbd7e6;border-radius:5px;background:#fff;color:#33445d;font-size:10px}.sort-head{border:0;background:transparent;color:inherit;font-weight:800;padding:0;text-align:left}.sort-head:hover{color:var(--blue)}.filter-hint{font-size:9px;color:#7888a0;font-weight:400}.error{background:#fff0f0;color:#a52323;padding:12px;border-radius:8px}.loading{padding:22px;text-align:center;color:#60728b}
+.switch-wrap{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid #cdd9e8;border-radius:8px;background:#f8fbff;color:#263954;font-size:11px;font-weight:700;white-space:nowrap}.switch-wrap input{position:absolute;opacity:0;width:1px;height:1px}.switch{width:34px;height:19px;border-radius:20px;background:#aab6c6;position:relative;transition:.18s;cursor:pointer}.switch:after{content:"";position:absolute;width:15px;height:15px;left:2px;top:2px;border-radius:50%;background:white;transition:.18s;box-shadow:0 1px 3px #0003}.switch-wrap input:checked+.switch{background:#1465e8}.switch-wrap input:checked+.switch:after{transform:translateX(15px)}.switch-state{color:#1465e8;min-width:34px}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(4,1fr)}.charts{grid-template-columns:repeat(2,minmax(0,1fr))}.charts .panel:last-child{grid-column:1 / -1}.donut-layout{flex-wrap:nowrap}.charts .panel:last-child .vchart{height:290px}}
+@media(max-width:700px){.app{grid-template-columns:1fr}aside{flex-direction:row;overflow:auto;padding:6px}aside button{white-space:nowrap;padding:9px}.kpis{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}.charts .panel:last-child{grid-column:auto}.donut-layout{flex-direction:column;flex-wrap:nowrap}.donut-layout .legend{grid-template-columns:repeat(auto-fit,minmax(105px,1fr))}.charts .panel:last-child .vchart{height:290px}main{padding:8px}.topbar{padding:10px}.brand h1{font-size:16px}}
+
+/* ===== VISUAL REFRESH v17: executive glass-lite dashboard ===== */
+:root{
+ --bg:#eef3f9;--card:#ffffff;--ink:#142b49;--muted:#718198;--line:#e3eaf3;
+ --blue:#2477df;--nav:#102b4a;--nav2:#0b2038;
+}
+body{background:radial-gradient(ellipse at 12% 0%,#e5effb 0%,transparent 34%),linear-gradient(135deg,#f4f7fb,#edf2f8);font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+.topbar{min-height:76px;padding:13px 24px;background:linear-gradient(112deg,#0b2038 0%,#12395f 58%,#1b5683 100%);box-shadow:0 5px 18px #102d4b24;border-bottom:1px solid #ffffff20}
+.logo{font-size:20px;letter-spacing:.2px}.brand h1{font-size:21px;letter-spacing:.1px}.brand p{color:#c3d5e8}
+.app{grid-template-columns:158px minmax(0,1fr);min-height:calc(100vh - 76px)}
+aside{padding:18px 10px;background:linear-gradient(180deg,#102b4a,#0c223b);gap:8px}
+aside button{border-radius:10px;padding:12px 11px;font-size:12px;transition:background .18s,transform .18s}
+aside button.active{background:linear-gradient(100deg,#2468b7,#1d579a);box-shadow:0 5px 14px #071a303b}
+aside button:hover{transform:translateX(2px)}
+main{padding:19px;gap:15px}
+.kpis{gap:11px}
+.kpi{position:relative;overflow:hidden;border:1px solid #e3eaf3;border-radius:13px;padding:14px 15px;background:linear-gradient(145deg,#fff,#fbfdff);box-shadow:0 4px 14px #18395d0a;transition:transform .18s,box-shadow .18s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 8px 20px #18395d13}
+.kpi:after{content:"";position:absolute;right:-22px;top:-25px;width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#eaf3ff99,#dceaff33)}
+.kpi .label{font-size:10px;text-transform:uppercase;letter-spacing:.55px;color:#657791}
+.kpi .num{font-size:27px;line-height:1.1;margin:8px 0 7px;letter-spacing:-.7px}
+.kpi .line{height:4px;width:30px;border-radius:9px;margin:0 0 7px}
+.kpi .sub{font-size:9px}
+.charts{grid-template-columns:minmax(205px,.78fr) minmax(205px,.78fr) minmax(340px,1.28fr) minmax(365px,1.34fr);gap:14px}
+.charts .panel,.panel{border:1px solid #dfe7f1;border-radius:15px;background:linear-gradient(160deg,#fff 0%,#fff 72%,#fafdff 100%);box-shadow:0 5px 18px #17395e0c}
+.charts .panel{padding:17px 17px 15px;min-height:350px;position:relative;overflow:hidden}
+.charts .panel:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#2d80d7,#68b5df);opacity:.8}
+.panel h3{font-size:13px;font-weight:750;letter-spacing:.05px;margin:1px 0 5px;color:#153354}
+.panel p{font-size:10px;line-height:1.45;color:#8090a5;margin:0 0 13px}
+.donut-layout{min-height:285px;gap:15px;padding:7px 0 2px}
+.donut{width:142px;height:142px;filter:drop-shadow(0 7px 10px #183b5d19)}
+.donut:after{inset:30px;box-shadow:inset 0 0 0 1px #edf2f8}
+.donut-center{font-size:26px;letter-spacing:-.5px}
+.donut-center small{font-size:9px;margin-top:2px;letter-spacing:.1px}
+.donut-layout .legend{max-width:100%;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px;padding:0 2px}
+.donut-layout .legend-row{gap:6px;font-size:10px;color:#425873;white-space:normal}
+.donut-layout .legend-row b{font-size:10px;color:#183657}
+.donut-layout .legend-row small{font-size:9px;white-space:nowrap}
+.legend-dot{width:9px;height:9px;border-radius:3px}
+.vchart{height:286px;padding:14px 7px 5px;border:1px solid #edf2f8;border-bottom:1px solid #dfe8f2;border-radius:10px;background:repeating-linear-gradient(to top,#fff 0,#fff 51px,#f0f4f9 52px);gap:5px}
+.vcol{grid-template-rows:22px 1fr 42px;gap:5px}
+.vcol .vval{font-size:10px;color:#244666}
+.vcol .vbar{border-radius:7px 7px 3px 3px;box-shadow:0 4px 9px #1686bd20}
+.vcol .vlabel{font-size:9px;color:#61738b}
+.chart-legend{font-size:9px;gap:17px;margin-top:11px;color:#667a94}
+.chart-legend i{border-radius:3px}
+.chart-footnote{font-size:9px;color:#8a98aa;margin-top:9px}
+.sc urve-panel .scurve-wrap{padding:7px 0 0}
+.sc urve-panel .scurve-wrap svg{max-height:275px}
+.scurve-legend{gap:17px;margin-top:12px;font-size:9px}
+.scurve-legend i{height:4px;width:13px}
+#inprogressSummaryPanel,#page-dashboard>.panel{padding:17px 18px;border-radius:14px;box-shadow:0 4px 15px #17395e09}
+.table-wrap{border-radius:10px;border-color:#e4ebf3}
+th{background:#f2f6fb;color:#3f5875}
+th,td{padding:9px 10px}
+tr:hover td{background:#f8fbff}
+.btn{border-radius:9px;box-shadow:0 2px 6px #061a3010;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 12px #061a3020}
+.btn.primary{background:linear-gradient(110deg,#2477df,#1760bd)}
+.toolbar input,.toolbar select{border-radius:9px;border-color:#d9e2ed}
+@media(max-width:1350px){.charts{grid-template-columns:repeat(2,minmax(0,1fr))}.charts .panel:last-child{grid-column:auto}}
+@media(max-width:900px){.app{grid-template-columns:1fr}.charts{grid-template-columns:repeat(2,minmax(0,1fr))}.charts .panel:last-child{grid-column:1/-1}.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){
+ main{padding:10px;gap:11px}.topbar{padding:11px 13px}.brand h1{font-size:16px}
+ .charts{grid-template-columns:1fr;gap:11px}.charts .panel:last-child{grid-column:auto}
+ .charts .panel{min-height:0;padding:15px}.donut-layout{min-height:255px}
+ .donut-layout .legend{max-width:420px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+</style></head><body>
+<header class="topbar"><div class="brand"><div class="logo">Mitratel<small>by Telkom Indonesia</small></div><div><h1>CRC UMT Monitoring</h1><p>Monitoring & Tracking CRC Interface | Live Google Sheets</p></div></div><div class="top-actions"><span class="status" id="syncStatus">Menghubungkan...</span><button class="btn primary" onclick="refreshData()">↻ Refresh Data</button><button class="btn dark" onclick="exportCsv()">⇩ Export</button></div></header>
+<div class="app"><aside>
+<button class="active" data-page="dashboard" onclick="showPage('dashboard')">⌂ &nbsp; Dashboard</button>
+<button data-page="recovery" onclick="showPage('recovery')">⊕ &nbsp; Recovery Tracker</button>
+<button data-page="history" onclick="showPage('history')">▧ &nbsp; History Link</button>
+</aside><main>
+<section id="page-dashboard" class="page active">
+<div class="kpis" id="kpis"></div>
+<div class="charts">
+<div class="panel"><h3>Distribusi CRC per Priority</h3><p>Komposisi Priority P0–P3</p><div id="priorityChart" class="barlist"></div></div>
+<div class="panel"><h3>Status Link</h3><p>Status dibaca dari kolom Actual pada tab RAW</p><div id="statusChart" class="barlist"></div></div>
+<div class="panel"><h3>Sebaran CRC per Kabupaten</h3><p>Jumlah link CRC berdasarkan kabupaten pada tab RAW</p><div id="kabupatenChart" class="barlist"></div></div>
+<div class="panel scurve-panel"><h3>S-Curve Recovery Link</h3><p>Target recovery 96 link · perbandingan Plan dan Actual Close · 31 Okt–18 Nov 2026</p><div id="scurveChart"></div></div>
+</div>
+<div class="panel" id="inprogressSummaryPanel"><h3>Summary Link In Progress</h3><p>Daftar link yang saat ini berstatus In Progress berdasarkan data RAW.</p><div id="inprogressSummary" class="table-wrap"></div></div>
+<div class="panel"><h3>Daftar Link CRC</h3><p>Data aktual yang dibaca langsung dari Google Sheets</p><div class="toolbar"><input id="qDash" placeholder="Cari link, site, NE ID, port..." oninput="renderDashboardView()"><select id="pDash" onchange="renderDashboardView()"><option value="">Semua Priority</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option></select><select id="sDash" title="Filter Status" aria-label="Filter Status" onchange="renderDashboardView()"><option value="">Filter Status: Semua</option><option>Open</option><option>In Progress</option><option>Close</option></select>
+<label class="switch-wrap" title="Aktif: satu record untuk setiap pasangan link duplikat; nonaktif: tampilkan seluruh record RAW"><span class="switch-label">Tampilkan 1 link per duplikat</span><input id="dedupeDash" type="checkbox" checked onchange="renderDashboardView()"><span class="switch"></span><span id="dedupeState" class="switch-state">Aktif</span></label></div><div id="dashTable" class="table-wrap"></div></div>
+</section>
+<section id="page-recovery" class="page"><div class="panel"><h3>Recovery Tracker</h3><p>Monitoring tindak lanjut link yang belum selesai. Date Action dan status dapat diperbarui; Date Close mengambil tanggal dari sumber RAW atau dapat disesuaikan.</p><div id="recoveryTable" class="table-wrap"></div></div></section>
+<section id="page-history" class="page"><div class="panel"><h3>Daftar Link CRC</h3><p>Daftar seluruh link CRC beserta endpoint, perangkat, port, priority, dan status</p><div class="toolbar"><input id="qLinks" placeholder="Cari link / site / perangkat..." oninput="renderLinks()"><select id="pLinks" onchange="renderLinks()"><option value="">Semua Priority</option><option>P0</option><option>P1</option><option>P2</option><option>P3</option></select><select id="sLinks" title="Filter Status" aria-label="Filter Status" onchange="renderLinks()"><option value="">Filter Status: Semua</option><option>Open</option><option>In Progress</option><option>Close</option></select><select id="dupLinks" onchange="renderLinks()"><option value="all">Semua Link</option><option value="unique">Tidak Duplikat</option><option value="duplicate">Hanya Duplikat</option></select></div><div id="linksTable" class="table-wrap"></div></div>
+<div class="panel"><h3>Riwayat Link</h3><p>Ringkasan berdasarkan tanggal request yang tersedia pada tab RAW.</p><div id="historyTable" class="table-wrap"></div></div></section>
+<div class="footer">Mitratel · CRC UMT Monitoring · Google Apps Script Web App · Source: RAW</div>
+</main></div>
+<script>
+let DATA=null,RECORDS=[];
+function $(id){return document.getElementById(id)}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$('page-'+p).classList.add('active');document.querySelectorAll('aside button').forEach(x=>x.classList.toggle('active',x.dataset.page===p))}
+function refreshData(){$('syncStatus').textContent='Membaca Google Sheets...';google.script.run.withSuccessHandler(d=>{DATA=d;RECORDS=d.records||[];renderAll();$('syncStatus').textContent='RAW · '+RECORDS.length+' link · '+new Date(d.updatedAt).toLocaleTimeString('id-ID')}).withFailureHandler(e=>{$('syncStatus').textContent='Gagal sinkronisasi';$('kpis').innerHTML='<div class="error">'+esc(e.message||e)+'</div>'}).getDashboardData()}
+// Sinkronisasi otomatis setiap 60 detik agar perubahan pada tab RAW ikut memperbarui
+// Daftar Link CRC dan ketiga chart. Hindari refresh saat pengguna sedang mengedit field.
+setInterval(()=>{
+  const active=document.activeElement;
+  const editing=active&&(['INPUT','SELECT','TEXTAREA'].includes(active.tagName));
+  if(!editing) refreshData();
+},60000);
+function dashboardRecords(){
+  if(!$('dedupeDash') || !$('dedupeDash').checked) return RECORDS.slice();
+  const seen=new Set(), out=[];
+  RECORDS.forEach(r=>{
+    const a=(String(r.neId||'')+'|'+String(r.nePort||'')).toLowerCase().replace(/\s+/g,'');
+    const b=(String(r.feId||'')+'|'+String(r.fePort||'')).toLowerCase().replace(/\s+/g,'');
+    const key=(a!=='|'&&b!=='|')?[a,b].sort().join(' <> '):'ROW:'+r.rowNumber;
+    if(!seen.has(key)){seen.add(key);out.push(r);}
+  });
+  return out;
+}
+function summarizeRows(rows){
+  const x={total:rows.length,p0:0,p1:0,p2:0,p3:0,open:0,inProgress:0,close:0},trend={},kab={};
+  rows.forEach(r=>{
+    if(r.priority!==null)x['p'+r.priority]++;
+    x[r.status==='In Progress'?'inProgress':String(r.status||'Open').toLowerCase()]++;
+    const d=r.reqDate||'Tanggal tidak tersedia';if(!trend[d])trend[d]=0;trend[d]++;
+    const k=r.kab||'Tidak diketahui';if(!kab[k])kab[k]={total:0,inProgress:0};kab[k].total++;
+    if(r.status==='In Progress')kab[k].inProgress++;
+  });
+  return {summary:x,trend:Object.keys(trend).sort().slice(-14).map(k=>({date:k,total:trend[k]})),kabupaten:Object.keys(kab).map(k=>({name:k,total:kab[k].total,inProgress:kab[k].inProgress})).sort((a,b)=>b.total-a.total)};
+}
+function renderAll(){renderDashboardView();renderLinks();renderRecovery();renderHistory()}
+function renderDashboardView(){
+  if(!DATA)return;
+  // Satu sumber data untuk KPI, ketiga chart, dan Daftar Link CRC.
+  // Dengan demikian perubahan record / duplicate / status / priority / kabupaten
+  // akan dihitung ulang bersama setiap kali data RAW disinkronkan.
+  const rows=dashboardRecords(),stats=summarizeRows(rows);
+  $('dedupeState').textContent=$('dedupeDash').checked?'Aktif':'Nonaktif';
+  renderKpis(stats.summary,rows.length!==RECORDS.length);
+  renderCharts(stats);
+  renderInProgressSummary(rows);
+  renderTables(rows);
+}
+function renderInProgressSummary(rows){
+  const progress=rows.filter(r=>r.status==='In Progress');
+  const host=$('inprogressSummary');
+  if(!host)return;
+  if(!progress.length){host.innerHTML='<div class="loading">Tidak ada link berstatus In Progress saat ini.</div>';return}
+  host.innerHTML='<div class="progress-summary">'+fullTable(progress)+'</div>';
+}
+function renderKpis(s,isDeduped){let items=[['Total CRC',s.total,isDeduped?'Jumlah link setelah duplikasi digabung':'Total record RAW','#1465e8'],['Priority 0',s.p0,'Prioritas tertinggi','#e23b3b'],['Priority 1',s.p1,'Prioritas tinggi','#f28b20'],['Priority 2',s.p2,'Prioritas sedang','#d6ae16'],['Priority 3',s.p3,'Prioritas lainnya','#8556e8'],['Open',s.open,'Belum selesai','#e23b3b'],['Close',s.close,'Sudah selesai','#139b6b']];$('kpis').innerHTML=items.map(x=>`<div class="kpi"><div class="label">${x[0]}</div><div class="num">${x[1].toLocaleString('id-ID')}</div><div class="line" style="background:${x[3]}"></div><div class="sub">${x[2]}</div></div>`).join('')}
+function donut(el,items,colors){
+  const total=items.reduce((a,x)=>a+x.value,0);
+  if(!total){$(el).innerHTML='<div class="muted">Belum ada data.</div>';return}
+  let cursor=0,stops=[];
+  items.forEach((x,i)=>{let from=cursor/total*100;cursor+=x.value;let to=cursor/total*100;stops.push(`${colors[i]} ${from}% ${to}%`)});
+  const legend=items.map((x,i)=>`<div class="legend-row"><i class="legend-dot" style="background:${colors[i]}"></i><span>${esc(x.label)}</span><b style="margin-left:auto">${x.value.toLocaleString('id-ID')}</b><small style="color:var(--muted)">${(x.value/total*100).toFixed(1)}%</small></div>`).join('');
+  $(el).innerHTML=`<div class="donut-layout"><div class="donut" style="background:conic-gradient(${stops.join(',')})"><div class="donut-center">${total.toLocaleString('id-ID')}<small>Total CRC</small></div></div><div class="legend">${legend}</div></div>`;
+}
+function verticalBars(el,items){
+  if(!items.length){$(el).innerHTML='<div class="muted">Belum ada data.</div>';return}
+  const sorted=items.slice().sort((a,b)=>b.total-a.total);
+  const top=sorted.slice(0,10);
+  if(sorted.length>10){
+    const rest=sorted.slice(10).reduce((sum,x)=>sum+x.total,0);
+    const restProgress=sorted.slice(10).reduce((sum,x)=>sum+(x.inProgress||0),0);
+    top.push({name:'Lainnya',total:rest,inProgress:restProgress});
+  }
+  const max=Math.max(1,...top.map(x=>x.total));
+  const niceMax=Math.ceil(max/5)*5 || max;
+  $(el).innerHTML=`<div class="vchart">${top.map(x=>{
+    const totalH=Math.max(3,x.total/niceMax*190);
+    const progressH=x.inProgress?Math.max(3,x.inProgress/niceMax*190):0;
+    return `<div class="vcol" title="${esc(x.name)}: ${x.total} total, ${x.inProgress||0} In Progress"><div class="vval-pair"><span>${x.total}</span>${x.inProgress?`<span style="color:#d98213">${x.inProgress}</span>`:''}</div><div class="vcol-bars"><div class="vbar total" style="height:${totalH}px"></div>${x.inProgress?`<div class="vbar progress" style="height:${progressH}px"></div>`:''}</div><span class="vlabel">${esc(x.name)}</span></div>`;
+  }).join('')}</div><div class="chart-legend"><span><i style="background:#1686bd"></i>Total CRC</span><span><i style="background:#e88916"></i>In Progress</span></div><div class="chart-footnote">Batang In Progress hanya muncul pada kabupaten yang memiliki link berstatus In Progress.</div>`;
+}
+function dateKey(value){
+  if(!value)return '';
+  const s=String(value).trim();
+  const iso=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if(iso)return `${iso[1]}-${String(iso[2]).padStart(2,'0')}-${String(iso[3]).padStart(2,'0')}`;
+  const d=new Date(s);
+  if(Number.isNaN(d.getTime()))return '';
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function renderSCurve(rows){
+  const host=$('scurveChart');if(!host)return;
+  const dates=Array.from({length:19},(_,i)=>{
+    const d=new Date(2026,9,31+i);
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  });
+
+  // Plan recovery untuk total target 96 link.
+  // Distribusi rencana mengikuti baseline 5 link/hari dan ditutup pada 96 link.
+  const plan=dates.map((_,i)=>Math.min(96,(i+1)*5));
+  plan[18]=96;
+
+  // Actual hanya menghitung link yang sudah berstatus Close.
+  // Tanggal aktual mengikuti Date Close, sehingga kurva bertambah saat link ditutup.
+  // Nilai dibatasi 96 agar tetap merepresentasikan cohort target recovery.
+  const actual=dates.map(day=>{
+    const count=rows.filter(r=>{
+      // Hanya status yang benar-benar disimpan dari Recovery Tracker.
+      // Status Actual/Close bawaan RAW tidak boleh dianggap sebagai Recovery Close.
+      if(r.recoveryStatus!=='Close')return false;
+      const d=dateKey(r.dateClose);
+      return d && d<=day;
+    }).length;
+    return Math.min(96,count);
+  });
+
+  const max=96;
+  const W=500,H=220,L=34,R=10,T=12,B=32,plotW=W-L-R,plotH=H-T-B;
+  const x=i=>L+i*plotW/(dates.length-1),y=v=>T+plotH-(v/max)*plotH;
+  const line=arr=>arr.map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const ticks=[0,24,48,72,96];
+  const grid=ticks.map(v=>`<g><line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="#e6edf5"/><text x="${L-7}" y="${y(v)+3}" text-anchor="end" font-size="9" fill="#718096">${v}</text></g>`).join('');
+  const labels=dates.map((d,i)=>i%3===0||i===18?`<text x="${x(i)}" y="${H-10}" text-anchor="middle" font-size="8" fill="#718096">${Number(d.slice(8))}/${Number(d.slice(5,7))}</text>`:'').join('');
+  const actualNow=actual[18];
+  const actualPath=actualNow>0?`<path d="${line(actual)}" fill="none" stroke="#159b6b" stroke-width="2.8" stroke-linecap="round"/>`:'';
+  host.innerHTML=`<div class="scurve-wrap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Kurva S Plan 96 link dan Actual Close ${actualNow} link">${grid}<path d="${line(plan)}" fill="none" stroke="#2878dc" stroke-width="2.8" stroke-linecap="round"/>${actualPath}${labels}</svg></div><div class="scurve-legend"><span><i style="background:#2878dc"></i>Plan 96 Link</span><span><i style="background:${actualNow>0?'#159b6b':'#cbd5e1'}"></i>Actual ${actualNow} Link Close</span></div>`;
+}
+function renderCharts(stats){
+  donut('statusChart',[{label:'Open',value:stats.summary.open},{label:'In Progress',value:stats.summary.inProgress},{label:'Close',value:stats.summary.close}],['#e34b4b','#f2a23a','#159b6c']);
+  donut('priorityChart',[0,1,2,3].map(p=>({label:'Priority '+p,value:stats.summary['p'+p]})),['#e34b4b','#f28b20','#d7b72b','#8556e8']);
+  verticalBars('kabupatenChart',stats.kabupaten);
+  renderSCurve(RECORDS);
+}
+function statusTag(s){return `<span class="tag ${s==='In Progress'?'p2':s.toLowerCase()}">${esc(s)}</span>`}
+function pTag(p){return `<span class="tag p${p}">${esc(p===null?'N/A':'P'+p)}</span>`}
+function fullTable(rows){if(!rows.length)return '<div class="loading">Tidak ada data yang sesuai.</div>';return `<table><thead><tr>${['No','Priority','Link / Section','NE Site','NE ID','NE Port','FE Site','FE ID','FE Port','Kabupaten','Status','Duplikat','Req Date','Aging'].map(x=>'<th>'+x+'</th>').join('')}</tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td>${pTag(r.priority)}</td><td>${esc(r.link)}</td><td>${esc(r.siteNE)}</td><td>${esc(r.neId)}</td><td>${esc(r.nePort)}</td><td>${esc(r.siteFE)}</td><td>${esc(r.feId)}</td><td>${esc(r.fePort)}</td><td>${esc(r.kab)}</td><td>${statusTag(r.status)}</td><td>${r.duplicate?'<span class="tag p1">Duplikat ×'+r.duplicateCount+'</span>':'Tidak'}</td><td>${esc(r.reqDate)}</td><td>${esc(r.aging)}</td></tr>`).join('')}</tbody></table>`}
+function filtered(qid,pid,sid){let q=($(qid)?.value||'').toLowerCase(),p=$(pid)?.value||'',s=$(sid)?.value||'';return RECORDS.filter(r=>(!q||[r.link,r.siteNE,r.siteFE,r.neId,r.feId,r.nePort,r.fePort,r.region,r.kab].join(' ').toLowerCase().includes(q))&&(!p||r.priorityLabel===p)&&(!s||r.status===s))}
+function renderTables(rows){if(DATA){let q=($('qDash')?.value||'').toLowerCase(),p=$('pDash')?.value||'',st=$('sDash')?.value||'';rows=rows||dashboardRecords();rows=rows.filter(r=>(!q||[r.link,r.siteNE,r.siteFE,r.neId,r.feId,r.nePort,r.fePort,r.region,r.kab].join(' ').toLowerCase().includes(q))&&(!p||r.priorityLabel===p)&&(!st||r.status===st));$('dashTable').innerHTML=fullTable(rows)}}
+function renderLinks(){if(DATA)$('linksTable').innerHTML=fullTable(filtered('qLinks','pLinks','sLinks'))}
+let recoverySort={field:'priority',dir:'asc'};
+function recoverySortBy(field){if(recoverySort.field===field)recoverySort.dir=recoverySort.dir==='asc'?'desc':'asc';else{recoverySort.field=field;recoverySort.dir='asc'}renderRecovery()}
+function recoveryFilterValue(id){return $(id)?.value||''}
+function renderRecovery(){
+ let rows=RECORDS.filter(r=>r.status!=='Close');
+ const q=recoveryFilterValue('rfLink').toLowerCase(),p=recoveryFilterValue('rfPriority'),kab=recoveryFilterValue('rfKab'),da=recoveryFilterValue('rfAction'),dc=recoveryFilterValue('rfClose'),st=recoveryFilterValue('rfStatus'),fu=recoveryFilterValue('rfFollow').toLowerCase();
+ rows=rows.filter(r=>(!q||r.link.toLowerCase().includes(q))&&(!p||r.priorityLabel===p)&&(!kab||r.kab===kab)&&(!da||r.dateAction===da)&&(!dc||r.dateClose===dc)&&(!st||r.status===st)&&(!fu||(r.followup||'').toLowerCase().includes(fu)));
+ const field=recoverySort.field,dir=recoverySort.dir==='asc'?1:-1;
+ rows.sort((a,b)=>{let av=a[field]??'',bv=b[field]??'';if(field==='priority'){av=av===null?99:av;bv=bv===null?99:bv;return (av-bv)*dir}if(field==='aging'){av=parseFloat(String(av).replace(',','.'))||0;bv=parseFloat(String(bv).replace(',','.'))||0;return (av-bv)*dir}return String(av).localeCompare(String(bv),'id',{numeric:true,sensitivity:'base'})*dir});
+ if(!RECORDS.some(r=>r.status!=='Close')){$('recoveryTable').innerHTML='<div class="loading">Tidak ada link Open atau In Progress.</div>';return}
+ const kabOptions=[...new Set(RECORDS.filter(r=>r.status!=='Close').map(r=>r.kab).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'id')).map(k=>`<option value="${esc(k)}" ${kab===k?'selected':''}>${esc(k)}</option>`).join('');
+ const sortMark=f=>recoverySort.field===f?(recoverySort.dir==='asc'?' ▲':' ▼'):' ↕';
+ $('recoveryTable').innerHTML=`<div class="filter-hint" style="margin:0 0 6px">Gunakan filter pada tiap kolom. Klik nama kolom untuk mengurutkan.</div><div class="table-wrap"><table class="recovery-table"><thead><tr>
+ <th>No.</th><th><button class="sort-head" onclick="recoverySortBy('link')">Link / Segment${sortMark('link')}</button><input class="recovery-filter" id="rfLink" placeholder="Cari link..." value="${esc(q)}" oninput="renderRecoveryKeepFocus('rfLink')"></th>
+ <th><button class="sort-head" onclick="recoverySortBy('priority')">Priority${sortMark('priority')}</button><select class="recovery-filter" id="rfPriority" onchange="renderRecovery()"><option value="">Semua</option>${[0,1,2,3].map(n=>`<option value="P${n}" ${p==='P'+n?'selected':''}>P${n}</option>`).join('')}</select></th>
+ <th><button class="sort-head" onclick="recoverySortBy('kab')">Kabupaten${sortMark('kab')}</button><select class="recovery-filter" id="rfKab" onchange="renderRecovery()"><option value="">Semua</option>${kabOptions}</select></th>
+ <th><button class="sort-head" onclick="recoverySortBy('dateAction')">Date Action${sortMark('dateAction')}</button><input type="date" class="recovery-filter" id="rfAction" value="${esc(da)}" onchange="renderRecovery()"></th>
+ <th><button class="sort-head" onclick="recoverySortBy('dateClose')">Date Close${sortMark('dateClose')}</button><input type="date" class="recovery-filter" id="rfClose" value="${esc(dc)}" onchange="renderRecovery()"></th>
+ <th><button class="sort-head" onclick="recoverySortBy('status')">Status${sortMark('status')}</button><select class="recovery-filter" id="rfStatus" onchange="renderRecovery()"><option value="">Semua</option>${['Open','In Progress'].map(x=>`<option ${st===x?'selected':''}>${x}</option>`).join('')}</select></th>
+ <th><button class="sort-head" onclick="recoverySortBy('aging')">Aging${sortMark('aging')}</button><span class="filter-hint">Klik untuk urutkan angka</span></th>
+ <th><button class="sort-head" onclick="recoverySortBy('followup')">Follow-up / RCA${sortMark('followup')}</button><input class="recovery-filter" id="rfFollow" placeholder="Cari catatan..." value="${esc(fu)}" oninput="renderRecoveryKeepFocus('rfFollow')"></th>
+ <th>Simpan</th></tr></thead><tbody>${rows.map((r,i)=>`<tr data-row="${r.key}"><td>${i+1}</td><td>${esc(r.link)}</td><td>${pTag(r.priority)}</td><td>${esc(r.kab)}</td><td><input type="date" class="note" id="action-${r.key}" value="${esc(r.dateAction)}"></td><td><input type="date" class="note" id="close-${r.key}" value="${esc(r.dateClose)}"></td><td><select class="note" id="status-${r.key}"><option ${r.status==='Open'?'selected':''}>Open</option><option ${r.status==='In Progress'?'selected':''}>In Progress</option><option ${r.status==='Close'?'selected':''}>Close</option></select></td><td>${esc(r.aging)}</td><td><input class="note" id="follow-${r.key}" value="${esc(r.followup)}" placeholder="PIC / RCA / tindakan"></td><td><button class="btn primary" onclick="saveRecovery('${r.key}')">Simpan</button></td></tr>`).join('')}</tbody></table></div><div class="muted" style="margin-top:6px">Menampilkan ${rows.length} dari ${RECORDS.filter(r=>r.status!=='Close').length} link aktif.</div>`;
+}
+function renderRecoveryKeepFocus(id){const el=$(id),pos=el?.selectionStart;renderRecovery();const next=$(id);if(next){next.focus();if(pos!==undefined)next.setSelectionRange(pos,pos)}}
+function saveRecovery(key){
+  const da=$('action-'+key).value,dc=$('close-'+key).value,st=$('status-'+key).value,fu=$('follow-'+key).value;
+  const btn=document.querySelector(`tr[data-row="${key}"] .btn.primary`);
+  if(btn){btn.disabled=true;btn.textContent='Menyimpan...';}
+  $('syncStatus').textContent='Menyimpan ke Google Sheet RAW...';
+  google.script.run
+    .withSuccessHandler(result=>{
+      $('syncStatus').textContent='Tersimpan · sinkronisasi dashboard...';
+      // Re-fetch server data after confirmed write; renderAll refreshes all charts and tables.
+      google.script.run
+        .withSuccessHandler(d=>{
+          DATA=d;RECORDS=d.records||[];
+          renderAll();
+          $('syncStatus').textContent='RAW diperbarui · '+RECORDS.length+' link · '+new Date(d.updatedAt).toLocaleTimeString('id-ID');
+        })
+        .withFailureHandler(e=>{
+          $('syncStatus').textContent='Tersimpan, tetapi gagal memuat ulang data';
+          alert('Status sudah tersimpan, tetapi refresh gagal: '+(e.message||e));
+        })
+        .getDashboardData();
+    })
+    .withFailureHandler(e=>{
+      $('syncStatus').textContent='Gagal menyimpan perubahan';
+      if(btn){btn.disabled=false;btn.textContent='Simpan';}
+      alert('Gagal menyimpan: '+(e.message||e));
+    })
+    .saveRecovery(key,da,dc,st,fu);
+}
+function renderHistory(){let g={};RECORDS.forEach(r=>{let d=r.reqDate||'Tidak diketahui';if(!g[d])g[d]={date:d,total:0,open:0,close:0,inProgress:0,p0:0,p1:0,p2:0,p3:0};let x=g[d];x.total++;x[r.status==='In Progress'?'inProgress':r.status.toLowerCase()]++;if(r.priority!==null)x['p'+r.priority]++});let rows=Object.keys(g).sort().map(k=>g[k]);$('historyTable').innerHTML=rows.length?`<table><thead><tr>${['Tanggal Request','Total CRC','Open','In Progress','Close','P0','P1','P2','P3'].map(x=>'<th>'+x+'</th>').join('')}</tr></thead><tbody>${rows.map(x=>`<tr><td>${esc(x.date)}</td><td>${x.total}</td><td>${x.open}</td><td>${x.inProgress}</td><td>${x.close}</td><td>${x.p0}</td><td>${x.p1}</td><td>${x.p2}</td><td>${x.p3}</td></tr>`).join('')}</tbody></table>`:'<div class="loading">Belum ada data.</div>'}
+function exportCsv(){if(!RECORDS.length)return;let h=['Priority','Link','NE Site','NE ID','NE Port','FE Site','FE ID','FE Port','Kabupaten','Status','Duplicate','Req Date','Date Action','Date Close','Aging'];let k=['priorityLabel','link','siteNE','neId','nePort','siteFE','feId','fePort','kab','status','duplicate','reqDate','dateAction','dateClose','aging'];let csv=[h,...RECORDS.map(r=>k.map(x=>r[x]))].map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='CRC_UMT_Export.csv';a.click();URL.revokeObjectURL(a.href)}
+refreshData();
+</script></body></html>
